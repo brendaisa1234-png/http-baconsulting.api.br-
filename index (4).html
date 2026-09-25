@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BA Consulting</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟧</text></svg>">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-alt: #FFF7F2;
+    --ink: #221C1A;
+    --ink-soft: #6B5F5A;
+    --orange: #FF5A2E;
+    --pink: #FF3D77;
+    --line: #F0E4DD;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1A1512;
+      --bg-alt: #241A16;
+      --ink: #F7EEE9;
+      --ink-soft: #C9B9B2;
+      --line: #3A2C26;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1A1512;
+    --bg-alt: #241A16;
+    --ink: #F7EEE9;
+    --ink-soft: #C9B9B2;
+    --line: #3A2C26;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    padding: 1.1rem 6vw;
+    padding-top: calc(1.1rem + env(safe-area-inset-top, 0px));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+  .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .logo span { color: var(--orange); }
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    margin-left: 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--orange); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 6vw; }
+
+  .hero {
+    padding: 6rem 0 4.5rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    margin: 0 0 1.3rem;
+    letter-spacing: -0.02em;
+    max-width: 15ch;
+  }
+  .hero p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    max-width: 42ch;
+    margin: 0 0 2rem;
+  }
+  .btn {
+    display: inline-block;
+    background: linear-gradient(100deg, var(--orange), var(--pink));
+    color: #fff;
+    padding: 0.85rem 1.7rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+  .btn:hover { filter: brightness(1.05); }
+
+  .hero-mark {
+    aspect-ratio: 1;
+    border-radius: 24px;
+    background: linear-gradient(150deg, var(--orange), var(--pink));
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-mark::before {
+    content: "";
+    position: absolute;
+    inset: 14%;
+    border: 1.5px solid rgba(255,255,255,.55);
+    border-radius: 16px;
+  }
+  .hero-mark span {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  section.block { padding: 4rem 0; border-top: 1px solid var(--line); }
+  .eyebrow-free h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 2.2rem;
+    letter-spacing: -0.01em;
+    max-width: 20ch;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
+  }
+  .service h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+  .service p { color: var(--ink-soft); margin: 0; font-size: 0.98rem; }
+
+  .about p {
+    max-width: 62ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.6rem;
+  }
+  .contact-item {
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.4rem;
+  }
+  .contact-item p.label { margin: 0 0 0.3rem; color: var(--ink-soft); font-size: 0.9rem; }
+  .contact-item p.value { margin: 0; font-weight: 700; font-size: 1.02rem; word-break: break-word; }
+  .contact-item a { color: var(--ink); text-decoration: none; }
+  .contact-item a:hover { color: var(--orange); }
+
+  footer {
+    padding: 2.2rem 6vw calc(2.2rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  footer p { margin: 0.25rem 0; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding-top: 3rem; }
+    .hero-mark { max-width: 220px; }
+    .services { grid-template-columns: 1fr; }
+    nav a { margin-left: 1.1rem; font-size: 0.88rem; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .btn { transition: filter 0.15s ease; }
+    nav a { transition: color 0.15s ease; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BA <span>Consulting</span></div>
+  <nav>
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <h1>Tecnologia e times comerciais que performam juntos</h1>
+      <p>Consultoria especializada em estruturar operações de tecnologia e gestão de times comerciais para empresas que querem crescer com previsibilidade.</p>
+      <a class="btn" href="#contato">Falar com a gente</a>
+    </div>
+    <div class="hero-mark">
+      <span>Tecnologia + Gestão Comercial</span>
+    </div>
+  </section>
+
+  <section class="block eyebrow-free" id="servicos">
+    <h2>Onde a BA Consulting atua</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Consultoria de tecnologia</h3>
+        <p>Diagnóstico e estruturação de processos e ferramentas para operações mais eficientes.</p>
+      </div>
+      <div class="service">
+        <h3>Gestão de time comercial</h3>
+        <p>Estruturação de rotinas, metas e acompanhamento de performance para equipes de vendas.</p>
+      </div>
+      <div class="service">
+        <h3>Acompanhamento contínuo</h3>
+        <p>Suporte próximo para ajustar estratégia conforme os resultados aparecem.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block about eyebrow-free" id="sobre">
+    <h2>Sobre a BA Consulting</h2>
+    <p>Somos uma consultoria focada em unir tecnologia e gestão comercial. Ajudamos empresas a organizar processos, estruturar times de vendas e adotar as ferramentas certas para crescer de forma sustentável.</p>
+  </section>
+
+  <section class="block eyebrow-free" id="contato">
+    <h2>Fale com a gente</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <p class="label">E-mail</p>
+        <p class="value"><a href="mailto:brenda.almeida@baconsulting.com.br">brenda.almeida@baconsulting.com.br</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="label">Telefone</p>
+        <p class="value"><a href="tel:+5511970226189">(11) 97022-6189</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="label">Endereço</p>
+        <p class="value">Avenida Transversal Sul, 200</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>BA Consulting — Consultoria de Tecnologia e Gestão de Time Comercial</p>
+  <p>CNPJ: 62.029.605/0001-62</p>
+  <p>&copy; 2026 BA Consulting. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
